@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Listado de enlaces</title>
+  <link rel="stylesheet"
+        href="./css/estilos.css" />
+</head>
+<body>
+  <main class="pagina">
+  <a href="./index.html"
+  class="enlace-volver">
+  ← Volver
+  </a> 
+    <section class="tarjeta">
+      <h1>Mis enlaces</h1>
+      <input
+        type="text"
+        id="titulo-enlace"
+        placeholder="Título del enlace"
+      />
+      <input
+        type="text"
+        id="url-enlace"
+        placeholder="https://..."
+      />
+      <button id="boton-agregar">
+        Añadir enlace
+      </button>
+      <section id="lista-enlaces"
+               class="lista-enlaces">
+      </section>
+    </section>
+  </main>
+  <script src="./js/fondos.js"></script>
+  <script src="./js/enlaces.js"></script>
+</body>
+</html>

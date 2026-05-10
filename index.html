@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet"
+        href="./css/estilos.css" />
+</head>
+<body>
+  <main class="dashboard-principal">
+  <nav class="menu-iconos">
+  <a href="./reloj.html" title="Reloj">
+    ⏰
+  </a>
+  <a href="./contrasena.html" title="Contraseñas">
+    🔒
+  </a>
+  <a href="./enlaces.html" title="Enlaces">
+    🔗
+  </a>
+  <a href="./tiempo.html" title="Tiempo">
+    🌦️
+  </a>
+</nav>
+    <section class="zona zona-reloj">
+      <p id="reloj-dashboard" class="reloj-dashboard">
+        00:00:00
+      </p>
+      <p id="fecha-dashboard" class="fecha-dashboard">
+        00/00/0000
+      </p>
+    </section>
+    <section class="zona zona-tiempo">
+    <h2 id="ciudad-dashboard">
+      Cargando ciudad...
+    </h2>
+    <p id="estado-dashboard">
+      Cargando clima...
+    </p>
+    <div class="tiempo-dashboard-contenido">
+      <img id="icono-dashboard"
+           class="icono-dashboard"
+           src=""
+           alt="Icono del clima" />
+      <p id="temperatura-dashboard"
+         class="temperatura-dashboard">
+        -- ºC
+      </p>
+    </div>
+    <div class="datos-dashboard">
+      <p id="precipitacion-dashboard">
+        Precipitación: --
+      </p>
+      <p id="humedad-dashboard">
+        Humedad: --
+      </p>
+      <p id="viento-dashboard">
+        Viento: --
+      </p>
+    </div>
+    <section id="prevision-dashboard"
+             class="prevision-dashboard">
+    </section>
+  </section>
+    <section class="zona zona-enlaces">
+      <h2>Añade tu enlace de interés 🔗</h2>
+      <input type="text"
+             id="titulo-enlace-dashboard"
+             placeholder="Nombre de tu enlace" />
+      <input type="text"
+             id="url-enlace-dashboard"
+             placeholder="Pega aquí la URL" />
+      <button id="boton-enlace-dashboard">
+        Añadir enlace
+      </button>
+      <div id="lista-enlaces-dashboard"></div>
+    </section>
+    <section class="zona zona-contrasena">
+      <h2>Crea tu contraseña segura 🔒</h2>
+      <label for="longitud-dashboard">
+        Número de caracteres
+      </label>
+      <input type="number"
+             id="longitud-dashboard"
+             min="12"
+             max="50"
+             value="12" />
+      <button id="boton-contrasena-dashboard">
+        Generar contraseña
+      </button>
+      <p id="resultado-dashboard"
+         class="resultado-contrasena">
+      </p>
+    </section>
+  </main>
+  <script src="./js/fondos.js"></script>
+  <script src="./js/dashboard.js"></script>
+
+</body>
+</html>

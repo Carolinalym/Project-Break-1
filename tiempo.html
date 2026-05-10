@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estación meteorológica</title>
+    <link rel="stylesheet" href="./css/estilos.css" />
+  </head>
+  <body>
+    <a href="./index.html" class="enlace-volver"> ← Volver </a>
+    <main class="pagina">
+      <section class="tarjeta tarjeta-tiempo">
+        <h1>Estación meteorológica</h1>
+        <article class="tiempo-actual">
+          <h2 id="ciudad-pais">Cargando ciudad...</h2>
+          <p id="estado-clima">Cargando clima...</p>
+          <img
+            id="icono-clima"
+            class="icono-clima"
+            src=""
+            alt="Icono del clima"
+          />
+          <p id="temperatura" class="temperatura">-- ºC</p>
+          <div class="datos-clima">
+            <p id="precipitacion">Precipitación: --</p>
+            <p id="humedad">Humedad: --</p>
+            <p id="viento">Viento: --</p>
+          </div>
+        </article>
+        <h2 class="titulo-prevision">Previsión por horas</h2>
+        <section id="prevision-horas" class="prevision-horas"></section>
+      </section>
+    </main>
+    <script src="./js/fondos.js"></script>
+    <script src="./js/tiempo.js"></script>
+  </body>
+</html>

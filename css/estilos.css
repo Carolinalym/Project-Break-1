@@ -1,0 +1,371 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY Y FONDO */
+body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease;
+  overflow-x: hidden;
+}
+
+/* CAPA OSCURA SOBRE EL FONDO */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+/* CONTENEDOR GENERAL */
+.pagina {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+}
+
+/* TARJETAS GENERALES */
+.tarjeta {
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* TITULO */
+h1 {
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+/* RELOJ */
+.fecha {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.reloj {
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.mensaje {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* INPUTS */
+input {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+/* BOTONES */
+button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+/* CONTRASEÑAS */
+.resultado-contrasena {
+  margin-top: 24px;
+  font-size: 22px;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+/* ENLACES */
+.lista-enlaces {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tarjeta-enlace {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.enlace {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.enlace:hover {
+  text-decoration: underline;
+}
+
+.boton-eliminar {
+  width: auto;
+  padding: 8px 14px;
+  background-color: crimson;
+  color: white;
+}
+
+/* TIEMPO */
+.tarjeta-tiempo {
+  width: min(850px, 95vw);
+}
+
+.tiempo-actual {
+  margin-top: 20px;
+}
+
+.icono-clima {
+  width: 90px;
+  height: 90px;
+  margin: 10px 0;
+}
+
+.temperatura {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.datos-clima {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.titulo-prevision {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.prevision-horas {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.tarjeta-hora {
+  min-width: 100px;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.tarjeta-hora img {
+  width: 50px;
+  height: 50px;
+}
+
+/* BOTON VOLVER */
+.enlace-volver {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  transition: 0.3s;
+}
+
+.enlace-volver:hover {
+  background-color: rgba(255,255,255,0.28);
+}
+
+/* DASHBOARD */
+.dashboard-principal {
+  min-height: 100vh;
+  position: relative;
+  padding: 40px;
+}
+
+/* ZONAS DEL DASHBOARD */
+.zona {
+  position: absolute;
+  padding: 24px;
+  border-radius: 18px;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+/* RELOJ DEL DASHBOARD */
+.zona-reloj {
+  top: 30px;
+  right: 160px;
+  text-align: center;
+  background-color: transparent;
+  backdrop-filter: none;
+}
+
+.reloj-dashboard {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.fecha-dashboard {
+  font-size: 20px;
+}
+
+/* TIEMPO DEL DASHBOARD */
+.zona-tiempo {
+  top: 130px;
+  right: 60px;
+  width: 420px;
+}
+
+.temperatura-dashboard {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.tiempo-dashboard-contenido {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icono-dashboard {
+  width: 70px;
+  height: 70px;
+}
+
+.datos-dashboard {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.prevision-dashboard {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.hora-dashboard {
+  min-width: 70px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.hora-dashboard img {
+  width: 42px;
+  height: 42px;
+}
+
+/* ENLACES DEL DASHBOARD */
+.zona-enlaces {
+  top: 130px;
+  left: 60px;
+  width: 400px;
+}
+
+/* CONTRASEÑAS DEL DASHBOARD */
+.zona-contrasena {
+  right: 60px;
+  bottom: 260px;
+  width: 420px;
+}
+
+/* MENU DE ICONOS */
+.menu-iconos {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  gap: 24px;
+  z-index: 20;
+}
+
+.menu-iconos a {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  transition: 0.3s;
+}
+
+.menu-iconos a:hover {
+  transform: scale(1.15) translateY(-4px);
+  background-color: rgba(255,255,255,0.18);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+  .dashboard-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .zona {
+    position: static;
+    width: 100%;
+  }
+
+  .zona-reloj {
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+  }
+
+  .menu-iconos {
+    position: static;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
