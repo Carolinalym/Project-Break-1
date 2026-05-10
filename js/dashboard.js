@@ -11,9 +11,11 @@ function añadirCero(numero) {
 
 function actualizarRelojDashboard() {
   const fechaActual = new Date();
+
   const horas = añadirCero(fechaActual.getHours());
   const minutos = añadirCero(fechaActual.getMinutes());
   const segundos = añadirCero(fechaActual.getSeconds());
+
   const dia = añadirCero(fechaActual.getDate());
   const mes = añadirCero(fechaActual.getMonth() + 1);
   const año = fechaActual.getFullYear();
@@ -63,22 +65,32 @@ const ciudad =
 async function obtenerTiempoDashboard() {
   const url =
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${ciudad}&days=1&aqi=no&alerts=no&lang=es`;
+
   try {
-    const respuesta = await fetch(url);
-    const datos = await respuesta.json();
+    const respuesta =
+      await fetch(url);
+
+    const datos =
+      await respuesta.json();
 
     ciudadDashboard.textContent =
       `${datos.location.name}, ${datos.location.country}`;
+
     estadoDashboard.textContent =
       datos.current.condition.text;
+
     iconoDashboard.src =
       `https:${datos.current.condition.icon}`;
+
     temperaturaDashboard.textContent =
       `${datos.current.temp_c} ºC`;
+
     precipitacionDashboard.textContent =
       `Precipitación: ${datos.current.precip_mm} mm`;
+
     humedadDashboard.textContent =
       `Humedad: ${datos.current.humidity}%`;
+
     vientoDashboard.textContent =
       `Viento: ${datos.current.wind_kph} km/h`;
 
@@ -86,6 +98,7 @@ async function obtenerTiempoDashboard() {
   } catch (error) {
     ciudadDashboard.textContent =
       "No se pudo cargar el tiempo";
+
     console.log(error);
   }
 }
@@ -93,6 +106,7 @@ async function obtenerTiempoDashboard() {
 function mostrarPrevisionDashboard(datos) {
   const horas =
     datos.forecast.forecastday[0].hour;
+
   previsionDashboard.innerHTML = "";
 
   horas.forEach((hora) => {
@@ -106,15 +120,21 @@ function mostrarPrevisionDashboard(datos) {
 
     tarjetaHora.innerHTML = `
       <p>${horaTexto}</p>
-      <img src="https:${hora.condition.icon}"
-           alt="${hora.condition.text}" />
+
+      <img
+        src="https:${hora.condition.icon}"
+        alt="${hora.condition.text}"
+      />
+
       <p>${hora.temp_c} ºC</p>
     `;
+
     previsionDashboard.appendChild(tarjetaHora);
   });
 }
 
 obtenerTiempoDashboard();
+
 
 // ENLACES DEL DASHBOARD
 const inputTituloDashboard =
@@ -141,19 +161,53 @@ function guardarEnlacesDashboard() {
 
 function renderizarEnlacesDashboard() {
   listaEnlacesDashboard.innerHTML = "";
+
   enlacesDashboard.forEach((enlace, indice) => {
     const contenedorEnlace =
       document.createElement("article");
 
-    contenedorEnlace.classList.add("enlace-dashboard");
+    contenedorEnlace.classList.add("tarjeta-enlace");
+
+    let urlFinal = enlace.url;
+
+    if (
+      !urlFinal.startsWith("http://") &&
+      !urlFinal.startsWith("https://")
+    ) {
+      urlFinal = `https://${urlFinal}`;
+    }
+
+    let dominio = "";
+
+    try {
+      dominio = new URL(urlFinal).hostname;
+    } catch (error) {
+      dominio = enlace.url;
+    }
+
     contenedorEnlace.innerHTML = `
-      <a href="${enlace.url}"
-         target="_blank">
-        ${enlace.titulo}
+      <a
+        href="${urlFinal}"
+        target="_blank"
+        class="preview-enlace"
+      >
+        <img
+          src="https://www.google.com/s2/favicons?domain=${dominio}&sz=64"
+          alt="Icono web"
+          class="favicon-enlace"
+        />
+
+        <div class="info-enlace">
+          <h3>${enlace.titulo}</h3>
+          <p>${dominio}</p>
+        </div>
       </a>
-      <button data-indice="${indice}"
-              class="boton-eliminar-dashboard">
-        X
+
+      <button
+        data-indice="${indice}"
+        class="boton-eliminar"
+      >
+        🗑️
       </button>
     `;
 
@@ -161,7 +215,8 @@ function renderizarEnlacesDashboard() {
   });
 
   const botonesEliminar =
-    document.querySelectorAll(".boton-eliminar-dashboard");
+    document.querySelectorAll(".boton-eliminar");
+
   botonesEliminar.forEach((boton) => {
     boton.addEventListener("click", () => {
       const indice =
@@ -175,8 +230,19 @@ function renderizarEnlacesDashboard() {
 function agregarEnlaceDashboard() {
   const titulo =
     inputTituloDashboard.value.trim();
+
   const url =
     inputUrlDashboard.value.trim();
+
+  let urlFinal = url;
+
+  if (
+    !url.startsWith("http://") &&
+    !url.startsWith("https://")
+  ) {
+    urlFinal = `https://${url}`;
+  }
+
   if (!titulo || !url) {
     alert("Debes completar el título y la URL");
     return;
@@ -184,7 +250,7 @@ function agregarEnlaceDashboard() {
 
   enlacesDashboard.push({
     titulo: titulo,
-    url: url
+    url: urlFinal
   });
 
   guardarEnlacesDashboard();
@@ -196,6 +262,7 @@ function agregarEnlaceDashboard() {
 
 function eliminarEnlaceDashboard(indice) {
   enlacesDashboard.splice(indice, 1);
+
   guardarEnlacesDashboard();
   renderizarEnlacesDashboard();
 }
@@ -206,6 +273,7 @@ botonEnlaceDashboard.addEventListener(
 );
 
 renderizarEnlacesDashboard();
+
 
 // CONTRASEÑA DEL DASHBOARD
 const inputLongitudDashboard =
@@ -235,15 +303,18 @@ const todosLosCaracteres =
 function obtenerCaracterAleatorio(texto) {
   const posicionAleatoria =
     Math.floor(Math.random() * texto.length);
+
   return texto[posicionAleatoria];
 }
 
 function generarContrasenaDashboard() {
   const longitud =
     Number(inputLongitudDashboard.value);
+
   if (longitud < 12 || longitud > 50) {
     resultadoDashboard.textContent =
       "La longitud debe ser entre 12 y 50";
+
     return;
   }
 
@@ -258,6 +329,7 @@ function generarContrasenaDashboard() {
     contrasena +=
       obtenerCaracterAleatorio(todosLosCaracteres);
   }
+
   resultadoDashboard.textContent =
     contrasena;
 }

@@ -27,13 +27,12 @@ body::before {
 
 /* CONTENEDOR GENERAL */
 .pagina {
-  position: fixed;
-  inset: 0;
-
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 24px;
 }
 
@@ -108,47 +107,132 @@ button:hover {
 }
 
 /* ENLACES */
+#lista-enlaces-dashboard,
 .lista-enlaces {
-  margin-top: 30px;
+  margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .tarjeta-enlace {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.12);
+  gap: 14px;
+
+  padding: 14px 16px;
+  border-radius: 16px;
+
+  background-color: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
+.tarjeta-enlace a,
 .enlace {
+  flex: 1;
   color: white;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   word-break: break-word;
 }
 
+.enlace::before {
+  content: none;
+}
+
+.tarjeta-enlace a:hover,
 .enlace:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .boton-eliminar {
   width: auto;
-  padding: 8px 14px;
-  background-color: crimson;
+  min-width: 42px;
+  padding: 8px 12px;
+
+  border-radius: 10px;
+  border: none;
+
+  background-color: rgba(220, 20, 60, 0.9);
   color: white;
+
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.boton-eliminar:hover {
+  transform: scale(1.05);
+  background-color: crimson;
+}
+#lista-enlaces-dashboard {
+  width: 100%;
+}
+
+#lista-enlaces-dashboard .tarjeta-enlace {
+  margin-top: 0px;
+}
+
+#lista-enlaces-dashboard .boton-eliminar {
+  width: 42px;
+  height: 42px;
+  margin-top: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.preview-enlace {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  color: white;
+  text-decoration: none;
+}
+
+.preview-enlace:hover {
+  opacity: 0.9;
+}
+
+.preview-enlace img {
+  flex-shrink: 0;
+}
+
+.info-enlace {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.favicon-enlace {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: white;
+  padding: 6px;
+}
+
+.info-enlace h3 {
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.info-enlace p {
+  font-size: 13px;
+  opacity: 0.75;
 }
 
 /* TIEMPO */
 .tarjeta-tiempo {
   width: min(850px, 95vw);
-}
 
+  position: relative;
+  z-index: 1;
+}
 .tiempo-actual {
   margin-top: 20px;
 }
@@ -202,16 +286,17 @@ button:hover {
   position: fixed;
   top: 20px;
   left: 20px;
+  display: inline-block;
+  z-index: 999999999;
   padding: 12px 18px;
   border-radius: 12px;
   text-decoration: none;
   color: white;
   font-weight: bold;
-  background-color: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: none;
+  pointer-events: auto;
 }
-
 .enlace-volver:hover {
   background-color: rgba(255,255,255,0.28);
 }

@@ -32,19 +32,37 @@ function renderizarEnlaces() {
       tarjetaEnlace.classList.add(
         "tarjeta-enlace"
       );
+      let dominio = "";
+
+      try {
+        dominio = new URL(enlace.url).hostname;
+      } catch (error) {
+        dominio = enlace.url;
+      }
+      
       tarjetaEnlace.innerHTML = `
         <a
           href="${enlace.url}"
           target="_blank"
-          class="enlace"
+          class="preview-enlace"
         >
-          ${enlace.titulo}
+          <img
+            src="https://www.google.com/s2/favicons?domain=${dominio}&sz=64"
+            alt="Icono web"
+            class="favicon-enlace"
+          />
+      
+          <div class="info-enlace">
+            <h3>${enlace.titulo}</h3>
+            <p>${dominio}</p>
+          </div>
         </a>
+      
         <button
           class="boton-eliminar"
           data-indice="${indice}"
         >
-          X
+          🗑️
         </button>
       `;
 
